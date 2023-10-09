@@ -2,12 +2,11 @@
 
 echo -e '\nChecking and adding swap area...\n'
 
-# Check if 'swapfile' entry already exists in /etc/fstab
-if grep -q "swapfile" /etc/fstab; then
-    # If swapfile entry already exists, print a message and skip to the next steps
+# Check if 'swapfile' exists
+if [ -e $HOME/swapfile ]; then
     echo -e '\nSwap file already exists, skipping.\n'
 else
-    # If swapfile entry doesn't exist, start the process of creating a swapfile in the home directory
+    # If swapfile doesn't exist, start the process of creating a swapfile in the home directory
     cd $HOME
 
     # Allocate 8GB of space for the swapfile
